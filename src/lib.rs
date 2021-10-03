@@ -1,5 +1,6 @@
 mod utils;
 
+use web_sys::{window};
 use wasm_bindgen::prelude::*;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
@@ -14,6 +15,18 @@ extern {
 }
 
 #[wasm_bindgen]
-pub fn greet() {
-    alert("Hello, rust-wasm-example!");
+pub fn greet(s: &str) -> Result<(), JsValue> {
+    let window = window().expect("oops");
+    let document = window.document().expect("oops");
+    let body = document.body().expect("oops");
+
+    // Manufacture the element we're gonna append
+    let val = document.create_element("p")?;
+    val.set_text_content(Some("Hello from Rust!"));
+
+    body.append_child(&val)?;
+
+    alert(s);
+
+    Ok(())
 }

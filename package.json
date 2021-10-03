@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "wasm-pack build",
-    "test": "wasm-pack test --headless --chrome"
+    "build": "wasm-pack build --release --target web",
+    "test": "wasm-pack test --headless --chrome",
+    "start": "npx http-server"
   }
 }

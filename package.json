@@ -1,0 +1,9 @@
+{
+  "name": "rust-wasm-example",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "wasm-pack build",
+    "test": "wasm-pack test --headless --chrome"
+  }
+}
